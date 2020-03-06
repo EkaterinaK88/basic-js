@@ -1,23 +1,49 @@
 const chainMaker = {
+  string: '',
   getLength() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    let length = 0;
+    this.string = this.string.split('~~');
+    for (let i = 0; i < this.string.length; i++) {
+      if (this.string[i] !== '') {
+        length++;
+      }
+    }
+    return length;
   },
   addLink(value) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    value = String(value);
+    if (this.string.indexOf('~') === 0) {
+      this.string += `~~( ${value || ''} )`;
+    } else {
+      this.string += `( ${value || ''} )~~`;
+    }
+    return this;
   },
   removeLink(position) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    let elems = this.getLength();
+    if (parseInt(position) !== position || position <= 0 || position > elems) {
+      throw new Error;
+    };  
+    if (this.string[0] !== '') {
+      this.string.splice(position - 1, 1);
+      this.string = this.string.join('~~');
+    } else {
+      this.string.splice(position, 1);
+      this.string = this.string.join('~~');
+    }
+    return this;
   },
   reverseChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    this.string = this.string.split('~~').reverse().join('~~');
+    return this;
   },
   finishChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if (this.string.indexOf('~') === 0) {
+      this.string = this.string.slice(2);    //slice(0,2)???
+    } else {
+      this.string = this.string.slice(0, -2);
+    }
+    return this.string;
   }
 };
 
