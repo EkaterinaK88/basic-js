@@ -1,7 +1,7 @@
 const MODERN_ACTIVITY= 15; 
 const HALF_LIFE_PERIOD= 5730;
 
-module.exports = dateSample(sampleActivity) {
+module.exports = function dateSample(sampleActivity) {
   let year;
   let k = 0.693/HALF_LIFE_PERIOD;
   if (typeof sampleActivity != 'string' || parseFloat(sampleActivity) <= 0 || parseFloat(sampleActivity) >  
