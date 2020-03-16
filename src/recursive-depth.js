@@ -8,7 +8,8 @@ module.exports = class DepthCalculator {
         for (let i = 0; i < array.length; i++) {
           arr.push(...array[i]);
         };
-        depth += calculateDepth(arr);
+        let calc = new DepthCalculator();
+        depth += calc.calculateDepth(arr);
         depth--;
       };
      return depth;
