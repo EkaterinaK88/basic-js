@@ -22,6 +22,7 @@ const chainMaker = {
   removeLink(position) {
     let elems = this.getLength();
     if (parseInt(position) !== position || position <= 0 || position > elems) {
+      this.string = '';
       throw new Error;
     };  
     if (this.string[0] !== '') {
@@ -39,11 +40,13 @@ const chainMaker = {
   },
   finishChain() {
     if (this.string.indexOf('~') === 0) {
-      this.string = this.string.slice(2);    //slice(0,2)???
+      this.string = this.string.slice(2);   
     } else {
       this.string = this.string.slice(0, -2);
     }
-    return this.string;
+    let res = this.string;
+    this.string = '';
+    return res;
   }
 };
 
